@@ -12,6 +12,7 @@ function setLang(lang) {
 // 渲染所有 data-i18n 文本
 function renderI18n(lang) {
   const dict = window.i18n[lang] || window.i18n.en;
+  document.documentElement.setAttribute('lang', lang); 
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (dict[key]) {
