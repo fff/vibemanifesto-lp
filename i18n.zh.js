@@ -63,7 +63,7 @@ window.i18n.zh = {
     ]
   ],
   copyright: "© 2025 氛围宣言作者",
-  copyrightNotice: "本声明可自由复制，但须完整保留此备注",
+  copyrightNotice: "本宣言可自由复制，但须完整保留此声明",
   github: "GitHub仓库",
   switchLang: "EN/中文"
 };
