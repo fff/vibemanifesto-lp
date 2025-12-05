@@ -106,20 +106,3 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Around lines 13-24, replace innerText with appropriate methods
-const links = document.querySelectorAll('a');
-links.forEach(link => {
-  link.textContent = link.textContent; // Use textContent for anchor elements
-});
-
-const buttons = document.querySelectorAll('button');
-buttons.forEach(button => {
-  button.textContent = button.textContent; // Use textContent for button elements
-});
-
-// For other elements, continue using innerHTML for proper escaping
-const otherElements = document.querySelectorAll('div, span, p');
-otherElements.forEach(element => {
-  // Keep innerHTML for other elements to ensure proper escaping
-  // element.innerHTML = element.innerHTML;
-});
