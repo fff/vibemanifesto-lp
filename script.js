@@ -1,6 +1,7 @@
 // 获取当前语言，默认en
 function getLang() {
-  return localStorage.getItem('lang') || 'en';
+  const stored = localStorage.getItem('lang');
+  return stored === 'zh' ? 'zh' : 'en';
 }
 
 // 设置语言并渲染
@@ -11,15 +12,17 @@ function setLang(lang) {
 
 // 渲染所有 data-i18n 文本
 function renderI18n(lang) {
-  const dict = window.i18n[lang] || window.i18n.en;
+  const fallback = window.i18n.en || {};
+  const dict = window.i18n[lang] || fallback;
   document.documentElement.setAttribute('lang', lang); 
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    if (dict[key]) {
+    const value = dict[key] || fallback[key];
+    if (value) {
       if (el.tagName === 'A' || el.tagName === 'BUTTON') {
-        el.textContent = dict[key];
+        el.textContent = value;
       } else {
-        el.innerHTML = dict[key];
+        el.innerHTML = value;
       }
     }
   });
