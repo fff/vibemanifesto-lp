@@ -16,8 +16,8 @@ function renderI18n(lang) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (dict[key]) {
-      if (el.tagName === 'A') {
-        el.innerText = dict[key];
+      if (el.tagName === 'A' || el.tagName === 'BUTTON') {
+        el.textContent = dict[key];
       } else {
         el.innerHTML = dict[key];
       }
@@ -104,4 +104,22 @@ document.addEventListener('DOMContentLoaded', () => {
       item.style.transform = 'translateY(0)';
     }, 200 + (index * 150));
   });
+});
+
+// Around lines 13-24, replace innerText with appropriate methods
+const links = document.querySelectorAll('a');
+links.forEach(link => {
+  link.textContent = link.textContent; // Use textContent for anchor elements
+});
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button => {
+  button.textContent = button.textContent; // Use textContent for button elements
+});
+
+// For other elements, continue using innerHTML for proper escaping
+const otherElements = document.querySelectorAll('div, span, p');
+otherElements.forEach(element => {
+  // Keep innerHTML for other elements to ensure proper escaping
+  // element.innerHTML = element.innerHTML;
 });
